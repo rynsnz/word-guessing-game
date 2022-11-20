@@ -16,11 +16,8 @@ guess = input("Guess a letter: ").lower()
 # is the letter in the random word?
 # guess in chosen_word
 
-space = 0
-
-for letter in chosen_word:
-    if guess == chosen_word[space]:
-        prompt[space] = guess
-    space += 1
+for position in range(len(chosen_word)):
+    if guess == chosen_word[position]:
+        prompt[position] = guess
 
 print(prompt)
