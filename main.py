@@ -1,17 +1,26 @@
 import random
-word_list = ["dog", "cat", "horse"]
+word_list = ["apple", "orange", "banana"]
 
 # randomly choose a word from the word_list and assign it to a variable
 # chosen_word = word_list[random.randint(0, len(word_list) - 1)]
 chosen_word = random.choice(word_list)
 
+# establish a prompt for the length of the word with spaces
+prompt = ['_' for n in chosen_word]
+
 # Ask the user to guess a letter and assign their answer to a variable
+print(f"Psst... the word is {chosen_word}")
+
 guess = input("Guess a letter: ").lower()
 
 # is the letter in the random word?
 # guess in chosen_word
+
+space = 0
+
 for letter in chosen_word:
-    if letter in guess:
-        print("Right")
-    else:
-        print("Wrong")
+    if guess == chosen_word[space]:
+        prompt[space] = guess
+    space += 1
+
+print(prompt)
