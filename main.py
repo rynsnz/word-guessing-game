@@ -1,6 +1,5 @@
 import random
 word_list = ["apple", "orange", "banana"]
-
 '''
 Set up the game
 '''
@@ -18,17 +17,26 @@ prompt = ['_' for n in chosen_word]
 print(f"Psst... the word is {chosen_word}")
 
 # Game in play
+chances = ['0', '1', '2', '3', '4', '5', '6']
 while prompt != winning:
-    guess = input("Guess a letter: ").lower()
-
     '''
     Check to see if the letter in the random word?
     If true, replace the guessed letter in the prompt
     '''
+    print(f"You have {chances[-1]} chances left!")
+    guess = input("Guess a letter: ").lower()
     for position in range(len(chosen_word)):
         if guess == chosen_word[position]:
             prompt[position] = guess
-
+    
+    if guess not in chosen_word:
+        chances.pop()
+    
     print(prompt)
 
-print('You won!')
+    if len(chances) < 1:
+        break
+
+if len(chances) < 1:
+    print('You Lost!')
+else: print('You Won!')
